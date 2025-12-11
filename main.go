@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+	
 )
 
 
@@ -39,20 +40,22 @@ func main() {
 			newName := r.FormValue("name")
 			amountStr := r.FormValue("amount")
 
-			amountInt, err := strconv.Atoi(amountStr)
-			if err != nil {
-				fmt.Println("Error converting string to int", err)
-			}
+			amountInt, _ := strconv.Atoi(amountStr)
+			
 
 			Expenses = append(Expenses, Expense{
 				Name : newName,
 				Amount: amountInt,
 			})
-
+			http.Redirect(w, r, "/add", http.StatusSeeOther)
+			return
 		}
 		addTmpl.Execute(w, Expenses)
 	})
 
+	http.HandleFunc("/showall" , func(w http.ResponseWriter, r *http.Request){
+		showallTmpl.Execute(w, Expenses)
+	})
 
 	fmt.Println("Your server is running in http://localhost:8080")
 	http.ListenAndServe(":8080", nil)
