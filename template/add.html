@@ -12,11 +12,18 @@
 
     <form action="/add" method="post">
         <input type="text" placeholder="Enter your expenses" name="name" required>
-        <input type="text" placeholder="Enter amount" name="amount" required>
+        <input type="number" placeholder="Enter amount" name="amount" required>
         <button type="submit">Enter</button>
     </form>
 
-
+    <h2> Current Expenses: </h2>
+<ul>
+    {{range $i, $e := .}}
+<li>{{ $e.Name }} - € {{ $e.Amount}} </li>
+{{else}}
+<li>No expenses enter yet.</li>
+{{end}}
+</ul>
 
     <a href="/">
         <button class="button" type="button">Back to Home</button>
