@@ -1,0 +1,23 @@
+body {
+    
+    background-color: antiquewhite;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.button {
+    color: black;
+    padding: 10px 20px;
+    background-color: rgb(6, 208, 244);
+    cursor: pointer;
+    border: none;
+    margin: 5px;
+    size: 10cm;
+    
+}
+
+.image {
+    height: auto;
+    width: 300px;
+}
